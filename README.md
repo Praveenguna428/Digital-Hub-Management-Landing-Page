@@ -81,12 +81,18 @@ flask run
 📸 Screenshots
 
 Login Page
+![image](https://github.com/user-attachments/assets/df3c6179-e278-4762-9b93-8539c25d3ff3)
 
 Admin Dashboard
+![image](https://github.com/user-attachments/assets/12f42fdd-7d8d-4915-a29a-b79187c22d16)
 
 Billing Page
+![image](https://github.com/user-attachments/assets/c7d2ea2d-3316-422c-af36-c6dc2ec5ce52)
+
 
 Revenue Charts
+![image](https://github.com/user-attachments/assets/feec4003-eb2b-4411-8b2c-6963dfa5426d)
+
 
 ✍️ Authors
 Saravanan M – Full Stack Developer
