@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Hub Management System</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 6rem;
+            text-align: center;
+            background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(to right, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        
+        .secondary-button {
+            background-color: white;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-decoration: none;
+            border: 1px solid var(--primary);
+        }
+        
+        .secondary-button:hover {
+            background-color: #f1f5f9;
+        }
+        
+        .dashboard-preview {
+            margin-top: 4rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .dashboard-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Developers Section */
+        .developers-section {
+            padding: 6rem 0;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .developers-section h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+        
+        .developers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .developer-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .developer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .developer-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 3px solid #e2e8f0;
+        }
+        
+        .developer-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .developer-role {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .developer-bio {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .developer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .developer-social a {
+            color: var(--gray);
+            transition: color 0.2s;
+        }
+        
+        .developer-social a:hover {
+            color: var(--primary);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .cta .cta-button {
+            background-color: white;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .cta .cta-button:hover {
+            background-color: #e2e8f0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .footer-about p {
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+   
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            opacity: 0.7;
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.125rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">DigitalHub</a>
+                <a href="https://praveenguna428.github.io/contact-us-form/" class="cta-button">Meet the Team</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Digital Hub Management System</h1>
+                <p>Streamline your digital operations with our all-in-one platform designed for efficiency, collaboration, and seamless workflow management.</p>
+                <div class="hero-buttons">
+                    <a href="https://digital-hub-management-system.netlify.app/" class="cta-button">Request Demo</a>
+                    <a href="#" class="secondary-button">Git Hub </a>
+                </div>
+                <div class="dashboard-preview">
+                    <!-- Replace with actual dashboard screenshot -->
+                    <img src="https://via.placeholder.com/1200x650" alt="Dashboard Preview">
+                </div>
+            </div>
+        </section>
+
+        <section class="developers-section" id="developers">
+            <div class="container">
+                <h2>Our Development Team</h2>
+                <div class="developers-grid">
+                    <div class="developer-card">
+                        <img src="https://github.com/Praveenguna428/img-hub/blob/main/saroo%20img.jpg?raw=true" alt="Saravanan" class="developer-avatar">
+                        <h3>Saravanan</h3>
+                        <p class="developer-role">Lead Developer</p>
+                        <p class="developer-bio">Full-stack developer with expertise in modern web technologies and system architecture.</p>
+                        <div class="developer-social">
+                            <a href="https://github.com/Praveenguna428"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/direct/t/17845409438482594/?hl=en"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="developer-card">
+                        <img src="https://github.com/Praveenguna428/img-hub/blob/main/praveen.jpg?raw=true" alt="Praveenkumar" class="developer-avatar">
+                        <h3>Praveenkumar</h3>
+                        <p class="developer-role">Frontend Specialist</p>
+                        <p class="developer-bio">A UI/UX expert  to designing and visually appealing user interfaces that enhance user  and  digital interactions.</p>
+                        <div class="developer-social">
+                            <a href="https://github.com/Praveenguna428"><i class="fab fa-github"></i></a>
+                            <a href="http://www.linkedin.com/in/praveen-kumar-pk2020"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/praveen_py_dev/?hl=en"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="developer-card">
+                        <img src="https://github.com/Praveenguna428/img-hub/blob/main/tharun.jpg?raw=true" alt="Tharun" class="developer-avatar">
+                        <h3>Tharun</h3>
+                        <p class="developer-role">Backend Engineer</p>
+                        <p class="developer-bio">Specializes in database architecture and high-performance server-side solutions.</p>
+                        <div class="developer-social">
+                            <a href="https://github.com/Tharun200503"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/tharun-a-s-b45b8a2a8"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/tharun_as_2005"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Project Overview</h2>
+                <p> The Digital Hub Management System is a billing and revenue solution that automates billing, tracks payments, manages multi-branch revenue, and generates 
+                    real-time reports to streamline operations and support financial decision-making.</p>
+                <a href=" https://drive.google.com/file/d/1FjdgbF-B3HS8ftVlFnLImRgNjGaC8Pn8/view?usp=sharing" class="cta-button">Learn More </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+
+         
+          <div class="footer-bottom">
+                <p>&copy; 2023 DigitalHub Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
